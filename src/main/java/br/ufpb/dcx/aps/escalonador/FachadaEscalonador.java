@@ -6,10 +6,16 @@ public class FachadaEscalonador {
 	private int tick;
 
 	public FachadaEscalonador(TipoEscalonador tipoEscalonador) {
+		if(tipoEscalonador == null) {
+			throw new EscalonadorException("O tipo do escalonador é obrigatório");
+		}
 		this.tipoEscalonador = tipoEscalonador;
 	}
 
 	public FachadaEscalonador(TipoEscalonador roundrobin, int quantum) {
+		if(quantum <= 0) {
+			throw new EscalonadorException("O quantum deve ser maior que zero");
+		}
 	}
 
 	public String getStatus() {
