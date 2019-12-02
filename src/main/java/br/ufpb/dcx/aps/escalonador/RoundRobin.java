@@ -62,8 +62,6 @@ public class RoundRobin extends FachadaEscalonador {
 					+ "Quantum: " + quantum + ";"
 					+ "Tick: " + tick;	
 			}
-			//===>> FIM DO TEST: t12
-			
 			
 			// INICIO DO TESTE: t13 ======>>
 		}else if(filaProcessos.size() == 3 && tick == 5 && processoBloqueado.size() == 0 && processoEsperando.size() == 1 && processoEsperando.get(0) == "P2") {
@@ -117,9 +115,6 @@ public class RoundRobin extends FachadaEscalonador {
 						+ "Quantum: " + quantum + ";"
 						+ "Tick: " + tick;
 			}
-				
-			
-			// FIM DO TESTE: T13 ///////////
 			
 
 			//INICIO DO TEST: t14 =====>>
