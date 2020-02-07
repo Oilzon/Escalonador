@@ -11,7 +11,7 @@ public class FachadaEscalonadorRoundRobinTest {
 	
 	@BeforeEach
 	public void inicializar() {
-		fachada = new RoundRobin(TipoEscalonador.RoundRobin);
+		fachada = new Escalonador(TipoEscalonador.RoundRobin);
 	}
 
 	@Test

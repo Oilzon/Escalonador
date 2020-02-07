@@ -2,20 +2,17 @@ package br.ufpb.dcx.aps.escalonador;
 
 public class FachadaEscalonador {
 	
-	private TipoEscalonador tipoEscalonador;
-	private int tick;
+	protected TipoEscalonador tipoEscalonador;
+	protected int tick;
+	protected int quantum = 3;
 
 	public FachadaEscalonador(TipoEscalonador tipoEscalonador) {
-		if(tipoEscalonador == null) {
-			throw new EscalonadorException("O tipo do escalonador é obrigatório");
-		}
 		this.tipoEscalonador = tipoEscalonador;
 	}
 
-	public FachadaEscalonador(TipoEscalonador roundrobin, int quantum) {
-		if(quantum <= 0) {
-			throw new EscalonadorException("O quantum deve ser maior que zero");
-		}
+	public FachadaEscalonador(TipoEscalonador tipoescalonador, int quantum) {
+		this.tipoEscalonador = tipoescalonador;
+		this.quantum = quantum;
 	}
 
 	public String getStatus() {
