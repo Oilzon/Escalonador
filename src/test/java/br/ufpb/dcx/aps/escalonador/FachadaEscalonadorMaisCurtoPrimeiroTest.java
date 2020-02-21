@@ -11,7 +11,7 @@ public class FachadaEscalonadorMaisCurtoPrimeiroTest {
 	
 	@BeforeEach
 	public void inicializar() {
-		fachada = new Escalonador(TipoEscalonador.MaisCurtoPrimeiro);
+		fachada = new MaisCurtoPrimeiro(TipoEscalonador.MaisCurtoPrimeiro);
 	}
 
     @Test
