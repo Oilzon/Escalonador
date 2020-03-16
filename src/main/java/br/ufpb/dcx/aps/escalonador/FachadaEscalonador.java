@@ -2,16 +2,14 @@ package br.ufpb.dcx.aps.escalonador;
 
 public class FachadaEscalonador {
 	
+	protected TipoEscalonador tipoEscalonador;
+	protected String status;
 	protected int tick;
-	protected int quantum = 3;
-//	private Escalonador escalonador;
 
 	public FachadaEscalonador(TipoEscalonador tipoEscalonador) {
-		//this.escalonador = iniciarEscalonador(tipoEscalonador);
 	}
 
-	public FachadaEscalonador(TipoEscalonador tipoescalonador, int quantum) {
-
+	public FachadaEscalonador(TipoEscalonador roundrobin, int quantum) {
 	}
 
 	public String getStatus() {
