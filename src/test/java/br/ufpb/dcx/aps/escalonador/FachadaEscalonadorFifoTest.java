@@ -11,7 +11,7 @@ public class FachadaEscalonadorFifoTest {
 	
 	@BeforeEach
 	public void inicializar() {
-		fachada = new FIFO(TipoEscalonador.Fifo);
+		fachada = new FachadaEscalonador(TipoEscalonador.Fifo);
 	}
 
     @Test

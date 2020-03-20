@@ -1,23 +1,30 @@
 package br.ufpb.dcx.aps.escalonador;
 
 public class FachadaEscalonador {
-	
+
 	protected TipoEscalonador tipoEscalonador;
 	protected String status;
 	protected int tick;
+	private FIFO escalonador;
 
 	public FachadaEscalonador(TipoEscalonador tipoEscalonador) {
+		if (tipoEscalonador.equals(tipoEscalonador.Fifo)) {
+			escalonador = new FIFO(tipoEscalonador);
+		}
 	}
 
-	public FachadaEscalonador(TipoEscalonador roundrobin, int quantum) {
+	public FachadaEscalonador(TipoEscalonador tipoEscalonador, int quantum) {
+		if (this.tipoEscalonador.equals(tipoEscalonador.Fifo)) {
+			escalonador = new FIFO(tipoEscalonador);
+		}
 	}
 
 	public String getStatus() {
-		return "Escalonador RoundRobin;Processos: {};Quantum: 3;Tick: " + tick;
+		return escalonador.getStatus();
 	}
 
 	public void tick() {
-		tick++;
+		escalonador.tick();
 	}
 
 	public void adicionarProcesso(String nomeProcesso) {
@@ -33,10 +40,12 @@ public class FachadaEscalonador {
 	}
 
 	public void retomarProcesso(String nomeProcesso) {
-		
+
 	}
 
-	public void adicionarProcessoTempoFixo(String string, int duracao) {
+	public void adicionarProcessoTempoFixo(String nomeProcesso, int duracao) {
 		
+		escalonador.adicionarProcessoTempoFixo(nomeProcesso, duracao);
+
 	}
 }
