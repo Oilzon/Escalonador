@@ -55,11 +55,16 @@ public class FIFO extends Escalonador {
 	}
 
 	public void adicionarProcesso(String nomeProcesso) {
-		filaProcessoEspera.add(nomeProcesso);
+		throw new EscalonadorException();
 	}
 
 	public void adicionarProcessoTempoFixo(String nomeProcesso, int duracao) {
-		adicionarProcesso(nomeProcesso);
+		if(filaProcessoEspera.contains(nomeProcesso) || nomeProcesso == null) {
+			throw new EscalonadorException();
+		}else if(duracao <= 0) {
+			throw new EscalonadorException();
+		}
+		filaProcessoEspera.add(nomeProcesso);
 		duracoes.add(duracao);
 	}
 

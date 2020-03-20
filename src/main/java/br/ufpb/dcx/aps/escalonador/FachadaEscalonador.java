@@ -28,9 +28,11 @@ public class FachadaEscalonador {
 	}
 
 	public void adicionarProcesso(String nomeProcesso) {
+		escalonador.adicionarProcesso(nomeProcesso);
 	}
 
 	public void adicionarProcesso(String nomeProcesso, int prioridade) {
+		escalonador.adicionarProcesso(nomeProcesso, prioridade);
 	}
 
 	public void finalizarProcesso(String nomeProcesso) {
@@ -44,7 +46,6 @@ public class FachadaEscalonador {
 	}
 
 	public void adicionarProcessoTempoFixo(String nomeProcesso, int duracao) {
-		
 		escalonador.adicionarProcessoTempoFixo(nomeProcesso, duracao);
 
 	}
