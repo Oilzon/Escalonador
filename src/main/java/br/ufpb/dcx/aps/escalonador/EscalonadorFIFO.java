@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class FIFO extends Escalonador {
+public class EscalonadorFIFO extends Escalonador {
 
 	private LinkedList<String> filaProcessoEspera;
 	private List<Integer> duracoes;
@@ -15,14 +15,14 @@ public class FIFO extends Escalonador {
 	private int duracaoProcessoExecutando;
 	private int duracaoFixa;
 
-	public FIFO(TipoEscalonador tipoEscalonador) {
+	public EscalonadorFIFO(TipoEscalonador tipoEscalonador) {
 		super(tipoEscalonador);
 		filaProcessoEspera = new LinkedList<String>();
 		duracoes = new ArrayList<Integer>();
 		processoFinalizar = new LinkedList<String>();
 	}
 
-	public FIFO(TipoEscalonador tipoEscalonador, int quantum) {
+	public EscalonadorFIFO(TipoEscalonador tipoEscalonador, int quantum) {
 		super(tipoEscalonador, quantum);
 	}
 

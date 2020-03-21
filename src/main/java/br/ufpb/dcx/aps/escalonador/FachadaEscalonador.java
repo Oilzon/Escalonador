@@ -7,17 +7,17 @@ public class FachadaEscalonador {
 	protected TipoEscalonador tipoEscalonador;
 	protected String status;
 	protected int tick;
-	private FIFO escalonador;
+	private EscalonadorFIFO escalonador;
 
 	public FachadaEscalonador(TipoEscalonador tipoEscalonador) {
 		if (tipoEscalonador.equals(tipoEscalonador.Fifo)) {
-			escalonador = new FIFO(tipoEscalonador);
+			escalonador = new EscalonadorFIFO(tipoEscalonador);
 		}
 	}
 
 	public FachadaEscalonador(TipoEscalonador tipoEscalonador, int quantum) {
 		if (this.tipoEscalonador.equals(tipoEscalonador.Fifo)) {
-			escalonador = new FIFO(tipoEscalonador);
+			escalonador = new EscalonadorFIFO(tipoEscalonador);
 		}
 	}
 

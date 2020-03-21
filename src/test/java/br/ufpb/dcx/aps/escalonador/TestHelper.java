@@ -5,12 +5,13 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.util.Arrays;
 
 import command.GetStatus;
+import command.Tick;
 
 public class TestHelper {
 	
 	public static void ticks(FachadaEscalonador fachada, int vezes) {
 		for (int i = 0; i < vezes; i++) {
-			fachada.tick();
+			fachada.executar(new Tick());
 		}
 	}
 
@@ -38,7 +39,7 @@ public class TestHelper {
 				+ "Processos: {Fila: " + Arrays.toString(fila) + "};"  
 				+ "Quantum: " + quantum + ";"
 				+ "Tick: " + ticks, 
-				fachada.getStatus());
+				fachada.executar(new GetStatus()));
 	}
 	
 	public static void checaStatus(FachadaEscalonador fachada, TipoEscalonador escalonador, int quantum, 
@@ -56,7 +57,7 @@ public class TestHelper {
 				+ "Processos: {Rodando: " + rodando + ", Fila: " + fila + ", Bloqueados: " + bloqueados + "};"
 				+ "Quantum: " + quantum + ";"
 				+ "Tick: " + ticks, 
-				fachada.getStatus());
+				fachada.executar(new GetStatus()));
 	}
 	
 	public static void checaStatusRodandoBloqueio(FachadaEscalonador fachada, TipoEscalonador escalonador, int quantum, 
@@ -65,7 +66,7 @@ public class TestHelper {
 				+ "Processos: {Rodando: " + rodando + ", Bloqueados: " + Arrays.toString(bloqueio) + "};"
 				+ "Quantum: " + quantum + ";"
 				+ "Tick: " + ticks, 
-				fachada.getStatus());
+				fachada.executar(new GetStatus()));
 	}
 
 	public static void checaStatusBloqueio(FachadaEscalonador fachada, TipoEscalonador escalonador, int quantum, 
@@ -74,7 +75,7 @@ public class TestHelper {
 				+ "Processos: {Bloqueados: " + Arrays.toString(bloqueio) + "};"  
 				+ "Quantum: " + quantum + ";"
 				+ "Tick: " + ticks, 
-				fachada.getStatus());
+				fachada.executar(new GetStatus()));
 	}
 	
 }
