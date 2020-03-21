@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 
+import command.GetStatus;
+
 public class TestHelper {
 	
 	public static void ticks(FachadaEscalonador fachada, int vezes) {
@@ -45,7 +47,7 @@ public class TestHelper {
 				+ "Processos: {};"
 				+ "Quantum: " + quantum + ";"
 				+ "Tick: " + ticks, 
-				fachada.getStatus());
+				fachada.executar(new GetStatus()));
 	}
 	
 	public static void checaStatusRodandoFilaBloqueio(FachadaEscalonador fachada, TipoEscalonador escalonador, 

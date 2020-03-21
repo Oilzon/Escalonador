@@ -1,10 +1,19 @@
 package br.ufpb.dcx.aps.escalonador;
 
+import java.util.LinkedList;
+
+import command.Comando;
+
 public class Escalonador {
+
+	private Comando command;
+
+	protected LinkedList<String> filaProcessoEspera;
+	protected String processoExecutando;
 
 	protected TipoEscalonador tipoEscalonador;
 
-	protected int quantum;
+	protected int quantum = 3;
 	protected int tick;
 
 	protected String status;
@@ -13,12 +22,19 @@ public class Escalonador {
 	}
 
 	public Escalonador(TipoEscalonador tipoEscalonador) {
+		if (tipoEscalonador == TipoEscalonador.Fifo) {
+			this.quantum = 0;
+		}
+
 		this.tipoEscalonador = tipoEscalonador;
 	}
 
 	public Escalonador(TipoEscalonador tipoEscalonador, int quantum) {
+		if (tipoEscalonador == TipoEscalonador.Fifo) {
+			this.quantum = 0;
+		}
+
 		this.tipoEscalonador = tipoEscalonador;
-		this.quantum = 0;
 	}
 
 	public void tick() {
@@ -39,6 +55,11 @@ public class Escalonador {
 
 	public void adicionarProcesso(String nomeProcesso, int prioridade) {
 		throw new EscalonadorException();
+	}
+	
+	public void executar(Comando c) {
+		c.setEscalonador(this);
+		command.executar();
 	}
 
 }

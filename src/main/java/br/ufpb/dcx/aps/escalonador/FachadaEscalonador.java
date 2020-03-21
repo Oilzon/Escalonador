@@ -1,5 +1,7 @@
 package br.ufpb.dcx.aps.escalonador;
 
+import command.Comando;
+
 public class FachadaEscalonador {
 
 	protected TipoEscalonador tipoEscalonador;
@@ -48,5 +50,11 @@ public class FachadaEscalonador {
 	public void adicionarProcessoTempoFixo(String nomeProcesso, int duracao) {
 		escalonador.adicionarProcessoTempoFixo(nomeProcesso, duracao);
 
+	}
+	
+	public String executar(Comando c) {
+		c.setEscalonador(escalonador);
+		return c.executar();
+		
 	}
 }
