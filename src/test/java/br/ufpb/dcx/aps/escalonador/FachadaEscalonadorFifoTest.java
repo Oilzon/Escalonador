@@ -5,6 +5,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.*;
 
+import command.AdicionarProcessoTempoFixo;
+import command.Tick;
+
 public class FachadaEscalonadorFifoTest {
 	
 	private FachadaEscalonador fachada;
@@ -19,25 +22,25 @@ public class FachadaEscalonadorFifoTest {
 		checaStatus(fachada, TipoEscalonador.Fifo, 0, 0);
 	}
 
-   	@Test
+    @Test
 	public void t02_avancarTempo() {
-		fachada.tick();
+		fachada.executar(new Tick());
 		checaStatus(fachada, TipoEscalonador.Fifo, 0, 1);
 	}
 
-    @Test
+	@Test
 	public void t03_processoTerminaPorSiSo() {
-		fachada.adicionarProcessoTempoFixo("P1", 2);
+		fachada.executar(new AdicionarProcessoTempoFixo("P1", 2));
 		checaStatusFila(fachada, TipoEscalonador.Fifo, 0, 0, "P1");
-		
-		fachada.tick();
+
+		fachada.executar(new Tick());
 		checaStatusRodando(fachada, TipoEscalonador.Fifo, 0, 1, "P1");
-		
-		fachada.tick();
+
+		fachada.executar(new Tick());
 		checaStatusRodando(fachada, TipoEscalonador.Fifo, 0, 2, "P1");
-		
-		//Acaba a duração do processo e libera a CPU 
-		fachada.tick();
+
+		// Acaba a duração do processo e libera a CPU
+		fachada.executar(new Tick());
 		checaStatus(fachada, TipoEscalonador.Fifo, 0, 3);
 	}
 

@@ -29,7 +29,7 @@ public class TestHelper {
 				+ "Processos: {Rodando: " + rodando + "};"
 				+ "Quantum: " + quantum + ";"
 				+ "Tick: " + ticks, 
-				fachada.getStatus());
+				fachada.executar(new GetStatus()));
 	}
 
 	public static void checaStatusFila(FachadaEscalonador fachada, TipoEscalonador escalonador, int quantum, 
