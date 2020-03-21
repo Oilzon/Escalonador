@@ -46,35 +46,35 @@ public class FachadaEscalonadorFifoTest {
 
 	@Test
 	public void t04_doisProcessosIniciaPeloPrimeiro() {
-		fachada.adicionarProcessoTempoFixo("P1", 3);
-		fachada.adicionarProcessoTempoFixo("P2", 2);
+		fachada.executar(new AdicionarProcessoTempoFixo("P1", 3));
+		fachada.executar(new AdicionarProcessoTempoFixo("P2", 2));
 
-		fachada.tick();
+		fachada.executar(new Tick());
 		checaStatusRodandoFila(fachada, TipoEscalonador.Fifo, 0, 1, "P1", "P2");
 
-		fachada.tick();
+		fachada.executar(new Tick());
 		checaStatusRodandoFila(fachada, TipoEscalonador.Fifo, 0, 2, "P1", "P2");
 
-		fachada.tick();
+		fachada.executar(new Tick());
 		checaStatusRodandoFila(fachada, TipoEscalonador.Fifo, 0, 3, "P1", "P2");
 
-		fachada.tick();
+		fachada.executar(new Tick());
 		checaStatusRodando(fachada, TipoEscalonador.Fifo, 0, 4, "P2");
-		
-		fachada.tick();
+
+		fachada.executar(new Tick());
 		checaStatusRodando(fachada, TipoEscalonador.Fifo, 0, 5, "P2");
-		
-		fachada.tick();
+
+		fachada.executar(new Tick());
 		checaStatus(fachada, TipoEscalonador.Fifo, 0, 6);
 	}
-	
+
 	@Test
 	public void t05_tresProcessosDesempatePelaOrdemDeAdicao() {
-		fachada.adicionarProcessoTempoFixo("P1", 3);
-		fachada.adicionarProcessoTempoFixo("P2", 2);
-		fachada.adicionarProcessoTempoFixo("P3", 3);
+		fachada.executar(new AdicionarProcessoTempoFixo("P1", 3));
+		fachada.executar(new AdicionarProcessoTempoFixo("P2", 2));
+		fachada.executar(new AdicionarProcessoTempoFixo("P3", 3));
 
-		fachada.tick();
+		fachada.executar(new Tick());
 		checaStatusRodandoFila(fachada, TipoEscalonador.Fifo, 0, 1, "P1", "P2", "P3");
 
 		ticks(fachada, 3);
